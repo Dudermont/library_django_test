@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="{% static 'bootstarp\css\bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css\base.css' %}">
+
+
+</head>
+<body>
+    <header class="header sticky-top">
+        <div class="header-container d-flex">
+            <navbar class="header-nav pt-4">
+                <ul class="header-list d-flex">
+                    <li>
+                        <a href="/" class="nav-a m-3">Home</a>
+                    </li>
+                    <li>
+                        <a href="/" class="nav-a m-3">Detail</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-a m-3">Shop</a>
+                    </li>
+                </ul>
+            </navbar>
+            <div class="header-logo">
+                <a href="/"><img src="{% static 'img/logo.png' %}" alt="" class="heavy-logo"></a>
+            </div>
+            <div class="header-profile">
+                <a href="#" class="m-3">LOGIN</a>
+            </div>
+        </div>
+    </header>
+    <div class="conteiner">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+
+    <script src="{% static 'bootstarp\js\bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
