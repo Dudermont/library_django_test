@@ -177,7 +177,7 @@ h5 {
 .cart-btn {
     width: 180px;
     height: 50px;
-        border: 1px solid #00000027;
+    border: 1px solid #00000027;
     border-radius: 5px;
     transition: all 0.4s ease;
     z-index: 2;
@@ -186,4 +186,78 @@ h5 {
 
 .cart-btn:hover {
     border: 1px solid #000;
+}
+
+.main {
+    margin-left: 150px;
+}
+
+.main-title {
+    font-size: 36px;
+    margin-bottom: 10px;
+    margin-top: 65px;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 225px);
+    width: 100%;
+    max-width: 1300px;
+    justify-content: center;
+    justify-items: center;
+    column-gap: 0px;
+    row-gap: 10px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    margin-top: 70px;
+}
+
+.llist {
+    margin-left: 80px;
+}
+
+.llist ul li {
+    font-size: 20px;
+    width: 165px;
+    height:35px;
+    margin-bottom: 5px;
+}
+
+.llist ul li a {
+    margin-left: 15px;
+    width: 165px;
+}
+
+.llist ul {
+    margin-top: 20px;
+}
+
+.selected {
+    border: 1px solid #000;
+    border-radius: 5px;
+ }
+
+.pagination {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    left: 46%;
+    gap: 12px;
+    justify-content: center;
+}
+
+.llist .pagination li {
+    width: auto;
+}
+
+.pagination a {
+    border: 1px solid #00000027;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.disabled {
+    opacity: 0.2;
 }
