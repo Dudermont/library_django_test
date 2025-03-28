@@ -1,55 +1,90 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-    <link rel="stylesheet" href="{% static 'bootstarp\css\bootstrap.min.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookTracker — Современный дизайн</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css\base.css' %}">
-
-
 </head>
 <body>
-    <header class="header sticky-top">
-        <div class="header-container d-flex">
-            <navbar class="header-nav pt-4">
-                <ul class="header-list d-flex">
-                    <li>
-                        <a href="/" class="nav-a m-3">Home</a>
-                    </li>
-                    <li>
-                        <a href="/" class="nav-a m-3">Detail</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-a m-3">Shop</a>
-                    </li>
-                </ul>
-            </navbar>
-            <div class="header-logo">
-                <a href="/"><img src="{% static 'img/logo.png' %}" alt="" class="heavy-logo"></a>
-            </div>
-            <div class="header-profile pt-2">
-                <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'img/btnh.png' %}" class="cart-png" alt=""></a>
-                <a href="#" class="m-2">LOGIN</a>
-                <p class="cart-quantity">
-                    {% with cart_quantity=cart|length %}
-                        {% if cart_quantity > 0 %}
-                            {{ cart_quantity }}
-                        {% else %}
-                            0
-                        {% endif %}
-                    {% endwith %}
-                </p>
-            </div>
+
+    <header>
+        <div class="header-left">
+            <nav class="tabs">
+                <button class="tab active">Главная</button>
+                <button class="tab">Мои книги</button>
+                <button class="tab">Топ-скидки</button>
+            </nav>
+        </div>
+
+<!--        <div class="logo">BookTracker</div>-->
+<!--        <a href="/"><img src="{% static 'img/logo.png' %}" alt="" class="logo"></a>-->
+        <div class="logo-container">
+            <a href="/"><img src="{% static 'img/logo.png' %}" alt="" class="logo-image"></a>
+        </div>
+
+
+        <div class="auth-buttons">
+            <button class="login-btn">Войти</button>
+            <button class="register-btn">Регистрация</button>
         </div>
     </header>
-    <div class="conteiner">
+    <main>
         {% block content %}
 
         {% endblock content %}
-    </div>
+    </main>
 
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>BookTracker</h3>
+                <p class="footer-description">
+                    Сервис для отслеживания скидок на книги. Мы помогаем вам экономить на любимых произведениях.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Telegram">📱</a>
+                    <a href="#" aria-label="VK">👥</a>
+                    <a href="#" aria-label="YouTube">▶️</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Разделы</h3>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Мои книги</a></li>
+                    <li><a href="#">Топ скидки</a></li>
+                    <li><a href="#">Новинки</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Помощь</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Как отслеживать</a></li>
+                    <li><a href="#">Партнёрам</a></li>
+                    <li><a href="#">Обратная связь</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><a href="mailto:help@booktracker.ru">help@booktracker.ru</a></li>
+                    <li><a href="tel:+78001234567">8 (800) 123-45-67</a></li>
+                    <li>Москва, ул. Книжная, 15</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2023 BookTracker. Все права защищены.
+        </div>
+    </footer>
 
     <script src="{% static 'bootstarp\js\bootstrap.bundle.min.js' %}"></script>
 </body>

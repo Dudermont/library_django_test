@@ -1,13 +1,16 @@
 from pathlib import Path
+import environ
 
+env = environ.Env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env.read_env(BASE_DIR / ".env")
 
-SECRET_KEY = 'TOKEN'
 
+SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
