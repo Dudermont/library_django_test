@@ -1,43 +1,43 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from .models import Product, Category
+from .models import Author, Book
 from cart.forms import CartAddProductForm
 
 
 def popular_list(request):
-    products = Product.objects.filter(available=True)[:3]
+    books = Book.objects.filter(available=True)
     return render(request,
                   'main/index/index.html',
-                  {'products': products})
+                  {'books': books})
 
 
-def product_detail(request, slug):
-    product = get_object_or_404(Product,
+def book_detail(request, slug):
+    book = get_object_or_404(Book,
                                 slug=slug,
                                 available=True)
     cart_product_form = CartAddProductForm
     return render(request,
                   'main/product/detail.html',
-                  {'product': product,
+                  {'book': book,
                    'cart_product_form': cart_product_form})
 
 
 def product_list(request, category_slug=None):
     page = request.GET.get('page', 1)
-    category = None
-    categories = Category.objects.all()
-    products = Product.objects.filter(available=True)
-    paginator = Paginator(products, 10)
+    author = None
+    authors = Author.objects.all()
+    books = Book.objects.filter(available=True)
+    paginator = Paginator(books, 10)
     current_page = paginator.page(int(page))
     if category_slug:
-        category = get_object_or_404(Category,
+        category = get_object_or_404(Book,
                                      slug=category_slug)
-        products = products.filter(category=category)
+        products = books.filter(category=category)
         paginator = Paginator(products, 10)
         current_page = paginator.page(int(page))
     return render(request,
                   'main/product/list.html',
-                  {'category': category,
-                   'categories': categories,
+                  {'author': author,
+                   'authors': authors,
                    'products': current_page,
                    'slug_url': category_slug})

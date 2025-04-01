@@ -8,23 +8,29 @@
 {% block content %}
     <div class="book-grid">
         <!-- Пример карточки -->
-        {% for product in products %}
+        {% for book in books %}
             <div class="book-card">
-                <a href="{{ product.get_absolute_url }}" class="home-card">
-                    <img src="{% if product.image %}{{ product.image.url }}{% else %} {% static 'img/noimage.png' %}{% endif %}" class="card-img" alt="">
-                    <h3 class="hh">{{ product.name }}</h3>
-                    <p class="book-author">Алексей Иванов</p>
-                    <div class="price-container">
-                        {% if product.discount %}
-                                <p class="old-price">{{ product.price }}</p>
-                                <span class="new-price">{{ product.sell_price }}</span>
-                        {% else %}
-                                <span class="new-price">{{ product.sell_price }}</span>
-                        {% endif%}
+                <a href="{{ book.get_absolute_url }}" class="home-card">
+                     <div class="image-container">
+                        <img src="{% if book.image %}{{ book.image.url }}{% else %} {% static 'img/noimage.png' %}{% endif %}" class="card-img" alt="">
+                    </div>
+                    <h3 class="book-tittle" title="{{ product.name }}">{{ book.name }}</h3>
+                    <div>
+                        <span class="book-author">{{ book.author }}</span>
+                        <div class="price-container">
+                            {% if book.discount %}
+                                    <span class="old-price">{{ book.price }}</span>
+                                    <span class="new-price">{{ book.sell_price }}</span>
+                            {% else %}
+                                    <span class="new-price single-price">{{ book.sell_price }}</span>
+                            {% endif%}
+                        </div>
                     </div>
                 </a>
-                <p class="track-count">📌 154 отслеживают</p>
-                <button class="buy-btn">Купить со скидкой</button>
+                <div class="zz">
+                    <span class="track-count">📌 154 отслеживают</span>
+                    <button class="buy-btn">Купить со скидкой</button>
+                </div>
             </div>
         {% endfor %}
     </div>

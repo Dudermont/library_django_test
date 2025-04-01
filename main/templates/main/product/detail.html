@@ -6,23 +6,36 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="detail-product d-flex">
-        <div class="detail img">
-            <img src="{% if product.image %}{{ product.image.url }}{% else %} {% static 'img/noimage.png' %}{% endif %}" alt="" class="detail-image">
+    <div class="detail-product">
+        <div class="detail-book-title-section">
+            <div class="detail-book-title">
+                <h1 class="detail-book-title-h1">{{ book.name }}</h1>
+                <h3>{{ book.author }}</h3>
             </div>
+        </div>
+        <div class="detail-book-img">
+            <picture class="detail-picture">
+                <img src="{% if book.image %}{{ book.image.url }}{% else %} {% static 'img/noimage.png' %}{% endif %}" alt="" class="detail-image">
+            </picture>
+        </div>
         <div class="detail-description">
-            <h2>{{ product.name }}</h2>
-            <h3>Категория: {{ product.category }}</h3>
-            <p>Описание: {{ product.description|linebreaks }}</p>
-            {% if product.discount %}
+            <p class="detail-anatation">Аннотация</p>
+            <div class="detail-anatation-text">
+                <span>
+                    {{ book.description|linebreaks }}
+                </span>
+            </div>
+        </div>
+        <div class="detail-order">
+            {% if book.discount %}
                 <div class="card-discount d-flex gap-2">
-                    <p class="line">$ {{ product.price }}</p>
-                    <p>$ {{ product.sell_price }}</p>
+                    <p class="line">$ {{ book.price }}</p>
+                    <p>$ {{ book.sell_price }}</p>
                 </div>
             {% else %}
-                <p class="price">$ {{ product.price }}</p>
+                <p class="price">$ {{ book.price }}</p>
             {% endif%}
-            <form action="{% url 'cart:cart_add' product.id %}" class="qform" method="post">
+            <form action="{% url 'cart:cart_add' book.id %}" class="qform" method="post">
                 {% csrf_token %}
                 <div class="cart-form">
                     {{ cart_product_form }}

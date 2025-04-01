@@ -8,6 +8,7 @@
     --gray: #86868B;
     --light-gray: #E2E2E9;
     --price-old: #86868B;
+    --base-1000: #000
 }
 
 body {
@@ -129,6 +130,11 @@ main {
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     border: 1px solid var(--light-gray);
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование по горизонтали */
+    text-align: center; /* Центрирование текста */
 }
 
 .book-card:hover {
@@ -146,15 +152,28 @@ main {
     color: var(--gray);
 }
 
+.book-tittle {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .book-author {
     color: var(--gray);
     margin-bottom: 0.5rem;
+    width: 100%;
 }
 
 .price-container {
     display: flex;
     gap: 1rem;
     align-items: center;
+    justify-content: center; /* Центрирование цен */
+    margin-bottom: 0.5rem;
+    width: 100%;
 }
 
 .old-price {
@@ -174,8 +193,10 @@ main {
     font-size: 0.8rem;
     display: flex;
     align-items: center;
+    justify-content: center; /* Центрирование счетчика */
     gap: 0.3rem;
     margin: 0.5rem 0;
+    width: 100%;
 }
 
 .buy-btn {
@@ -186,6 +207,7 @@ main {
     border-radius: 8px;
     font-weight: 600;
     width: 100%;
+    max-width: 200px; /* Ограничение ширины кнопки */
     cursor: pointer;
     transition: background 0.3s;
 }
@@ -319,13 +341,90 @@ footer {
 .card-img {
     width: 195px;
     height: 195px;
+    object-fit: contain; /* Сохраняет пропорции изображения */
 }
 
 .home-card {
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
+    justify-content: space-between;
 }
 
-.hh {
-    color: var(--text);
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.zz {
+    width: 100%;
+}
+
+.detail-product {
+    display: grid;
+    grid-template:
+        "title title title age"
+        "photos annotation order order"
+        "photos characteristic order order"
+        "photos . order order";
+    grid-template-columns: 320px calc(100% - 640px) 210px 110px;
+    row-gap: 36px;
+    width: 100%;
+}
+
+.detail-book-title-section {
+    grid-area: title;
+    margin-right: 32px;
+}
+
+.detail-book-title{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-book-title-h1 {
+    color: var(--base-1000);
+    font-family: Merriweather, Adjusted Georgia Fallback, serif;
+    font-size: 1.75rem;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-weight: 900;
+    line-height: 136%;
+}
+
+.detail-book-img {
+    grid-area: photos;
+}
+
+.detail-picture {
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+}
+.detail-image {
+    max-height: 492px;
+    width: 320px;
+}
+
+.detail-description {
+    grid-area: annotation;
+    margin: 0 32px;
+}
+
+.detail-anatation {
+    color: var(--base-1000);
+    font-family: AlergiaNormal, Trebuchet MS Fallback, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 136%;
+    margin-bottom: 12px;
+}
+
+.detail-order {
+    grid-area: order;
+    position: relative;
 }
