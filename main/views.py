@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Author, Book
@@ -11,6 +12,7 @@ def popular_list(request):
                   {'books': books})
 
 
+@login_required
 def book_detail(request, slug):
     book = get_object_or_404(Book,
                                 slug=slug,

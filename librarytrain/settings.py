@@ -29,6 +29,7 @@ INSTALLED_APPS = [
 INSTALLED_APPS += [
     'main',
     'cart',
+    'users',
 ]
 
 
@@ -120,3 +121,7 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 CART_SESSION_ID = 'cart'
+
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'main:popular_list'
+LOGOUT_REDIRECT_URL = 'main:popular_list'

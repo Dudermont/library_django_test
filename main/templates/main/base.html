@@ -25,11 +25,20 @@
             <a href="/"><img src="{% static 'img/logo.png' %}" alt="" class="logo-image"></a>
         </div>
 
-
-        <div class="auth-buttons">
-            <button class="login-btn">Войти</button>
-            <button class="register-btn">Регистрация</button>
-        </div>
+        {% if user.is_authenticated %}
+            <div class="auth-buttons">
+                <a href="/"><button class="login-btn">{{ user.username }}</button></a>
+                <form id="logoutForm" method="post" action="{% url 'users:logout' %}">
+					{% csrf_token %}
+                    <a href="{% url 'users:logout' %}"> <button class="register-btn">Выйти</button></a>
+                </form>
+            </div>
+        {% else %}
+            <div class="auth-buttons">
+                <a href="{% url 'users:login' %}"><button class="login-btn">Войти</button></a>
+                <a href="{% url 'users:register' %}"><button class="register-btn">Регистрация</button></a>
+            </div>
+        {% endif %}
     </header>
     <main>
         {% block content %}
