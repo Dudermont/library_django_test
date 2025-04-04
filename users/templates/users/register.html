@@ -26,23 +26,23 @@
 <!--    </form>-->
 
 
-    <form method="post">
+    <form method="post" class="auth-form">
         {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}">
         <div class="form-error">
             {{ form.non_field_errors }}
         </div>
         {% for f in form %}
-            <p>
-              <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
-              {{ f }}
-            </p>
+        <div class="form-group">
+            <label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                {{ f }}
             <div class="form-error">
-              {{ f.errors }}
+                {{ f.errors }}
             </div>
+        </div>
         {% endfor %}
-        <p>
-            <button type="submit">Регистрация</button>
-        </p>
+
+        <div class="form-actions">
+            <button type="submit" class="auth-submit-btn">Регистрация</button>
+        </div>
     </form>
 {% endblock content %}

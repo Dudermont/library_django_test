@@ -9,7 +9,7 @@ from .forms import LoginUserForm, RegisterUserForm
 
 class LoginUser(LoginView):
     form_class = LoginUserForm
-    template_name = 'users/register.html'
+    template_name = 'users/login.html'
 
 
 class RegisterUser(CreateView):
